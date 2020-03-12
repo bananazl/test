@@ -12,7 +12,7 @@ import cn.common.vo.SysResult;
 public class SysResultException {
 	
 	/**
-	 * 如果后台服务器发生运行时异常.则执行异常方�?
+	 * 如果后台服务器发生运行时异常.则执行异常方法?
 	 */
 	@ExceptionHandler(RuntimeException.class)
 	public SysResult sysResult(Exception exception) {

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect	//切面注解
 public class RunTimeAOP {
 	
-	//�?有的业务方式  service
+	
 	@Around(value="execution(* com.jt.service..*.*(..))")
 	public Object around(ProceedingJoinPoint joinPoint) {
 		Long startTime = System.currentTimeMillis();
@@ -24,7 +24,7 @@ public class RunTimeAOP {
 			String kind = joinPoint.getKind();
 			Object target = joinPoint.getTarget();	
 			System.out.println("类名:"+targetName);
-			System.out.println("方法�?:"+methodName);
+			System.out.println("方法名:"+methodName);
 			System.out.println("参数信息:"+args);
 			System.out.println("kind:"+kind);
 			System.out.println("目标对象:"+target);

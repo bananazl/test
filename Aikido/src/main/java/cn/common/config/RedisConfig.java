@@ -19,7 +19,7 @@ import redis.clients.jedis.JedisSentinelPool;
 import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
 
-//标识配置�?
+
 @Configuration
 @PropertySource("classpath:/properties/redis.properties")
 public class RedisConfig {
@@ -59,7 +59,7 @@ public class RedisConfig {
 	private String redisNode;   //IP:PORT
 	
 	@Bean	//标识实例化对象的类型
-	@Scope("prototype")	//对象的多�?  使用链接�?
+	@Scope("prototype")	//对象的多�?  使用链接�?
 	public Jedis jedis() { //key:value  jedis:jedis对象
 		
 		String[] nodeArray = redisNode.split(":");
@@ -80,7 +80,7 @@ public class RedisConfig {
 			String[] nodeArr = node.split(":");
 			String host = nodeArr[0];
 			int port = Integer.parseInt(nodeArr[1]);
-			//每循环一�?,添加�?个node节点对象到list集合�?
+			//每循环一�?,添加�?个node节点对象到list集合�?
 			shards.add(new JedisShardInfo(host, port));
 		}
 		return new ShardedJedis(shards);
@@ -88,31 +88,31 @@ public class RedisConfig {
 	
 	
 	*//**
-	 * 3.整合redis的哨�?
+	 * 3.整合redis的哨�?
 	 * 创建哨兵的池对象.
 	 *//*
 	@Value("${redis.sentinel}")
 	private String redisSentinel;
 	
-	@Bean   //(name="pool") //给bean 动�?�的起名.
+	@Bean   //(name="pool") //给bean 动�?�的起名.
 	public JedisSentinelPool jedisSentinelPool() {
 		Set<String> sentinels = new HashSet<>();
 		sentinels.add(redisSentinel);
 		return new JedisSentinelPool("mymaster", sentinels);
 	}
 	
-	// 动�?�获取池中的jedis对象
-	//问题说明:如何在方法中,动�?�获取bean对象.
-	//知识点说�?: 
-	//    1.Spring @Bean注解工作�?,如果发现方法有参数列�?.则会自动的注�?.
-	//    2.@Qualifier 利用名称,实现对象的动态赋�?.
+	// 动�?�获取池中的jedis对象
+	//问题说明:如何在方法中,动�?�获取bean对象.
+	//知识点说�?: 
+	//    1.Spring @Bean注解工作�?,如果发现方法有参数列�?.则会自动的注�?.
+	//    2.@Qualifier 利用名称,实现对象的动态赋�?.
 		
 	//sentinelJedis:jedis对象
 	@Bean
-	@Scope("prototype")	//设置为多�?,用户�?么时候使�?,�?么时候创建对�?
+	@Scope("prototype")	//设置为多�?,用户�?么时候使�?,�?么时候创建对�?
 	public Jedis sentinelJedis(JedisSentinelPool jedisSentinelPool) {
 		
-		//该jedis 有高可用的效�?.
+		//该jedis 有高可用的效�?.
 		return  jedisSentinelPool.getResource();
 	}
 	*/
