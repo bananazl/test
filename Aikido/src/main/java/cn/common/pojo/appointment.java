@@ -3,7 +3,7 @@ package cn.common.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.jt.pojo.Cart;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
